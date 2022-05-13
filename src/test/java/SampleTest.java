@@ -5,48 +5,42 @@ import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Optional;
+
 public class SampleTest {
 
     @Test
-    public void getUserTest()
+    public void shouldReturnUserDetailsWhenRequestMadeToGetSingleUser()
     {
        Response response= RestAssured.given()
-                .baseUri("https://petstore.swagger.io/v2/")
+                .baseUri("https://reqres.in/api/")
                 .header("accept","application/json")
-                .param("username","sampleusername1")
-                .param("password","samplepassword")
                 .when()
-                .get("user/login").then().assertThat().statusCode(200)
+                .get("users/2").then().assertThat().statusCode(200)
                .extract().response();
-
+       
        JsonPath path=response.body().jsonPath();
-       String message=path.get("message");
-       Assert.assertEquals(message.split(":")[0],"logged in user session");
-       Assert.assertTrue(Long.parseLong(message.split(":")[1])>1);
+       Assert.assertEquals(path.getInt("data.id"),2);
+       Assert.assertEquals(path.getString("data.email"),"janet.weaver@reqres.in");
 
     }
 
     @Test
-    public void createUserTest()
+    public void shouldRegisterNewUserWhenRequestMadeToRegister()
     {
 
         RestAssured.given()
-                .baseUri("https://petstore.swagger.io/v2/")
+                .baseUri("https://reqres.in/api")
                 .header("Content-Type","application/json")
-                .header("accept","application/json")
                 .body("{\n" +
-                        "  \"id\": 1,\n" +
-                        "  \"username\": \"sampleusername1\",\n" +
-                        "  \"firstName\": \"samplefirstname\",\n" +
-                        "  \"lastName\": \"samplelastname\",\n" +
-                        "  \"email\": \"sampleemail\",\n" +
-                        "  \"password\": \"samplepassword\",\n" +
-                        "  \"phone\": \"samplephone\",\n" +
-                        "  \"userStatus\": 3\n" +
-                        "}").when().
-                post("user")
-                .then().assertThat().statusCode(200).
-                body("message",Matchers.equalTo("1"));
+                        "\"email\": \"eve.holt@reqres.in\",\n" +
+                        "\"password\": \"pistol\"\n" +
+                        "}")
+                 .when()
+                 .post("/register")
+                 .then().log().all()
+                 .assertThat().statusCode(200)
+                 .body("id",Matchers.equalTo(4));
 
     }
 }
