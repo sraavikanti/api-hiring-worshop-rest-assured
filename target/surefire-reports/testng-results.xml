@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-05-13T16:21:00 IST" name="SampleTest" finished-at="2022-05-13T16:21:03 IST" duration-ms="2710">
+    <groups>
+    </groups>
+    <test started-at="2022-05-13T16:21:00 IST" name="Command line test" finished-at="2022-05-13T16:21:03 IST" duration-ms="2710">
+      <class name="SampleTest">
+        <test-method signature="shouldRegisterNewUserWhenRequestMadeToRegister()[pri:0, instance:SampleTest@12c8a2c0]" started-at="2022-05-13T16:21:00 IST" name="shouldRegisterNewUserWhenRequestMadeToRegister" finished-at="2022-05-13T16:21:03 IST" duration-ms="2461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldRegisterNewUserWhenRequestMadeToRegister -->
+        <test-method signature="shouldReturnUserDetailsWhenRequestMadeToGetSingleUser()[pri:0, instance:SampleTest@12c8a2c0]" started-at="2022-05-13T16:21:03 IST" name="shouldReturnUserDetailsWhenRequestMadeToGetSingleUser" finished-at="2022-05-13T16:21:03 IST" duration-ms="218" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldReturnUserDetailsWhenRequestMadeToGetSingleUser -->
+      </class> <!-- SampleTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- SampleTest -->
+</testng-results>

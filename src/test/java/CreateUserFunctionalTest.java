@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-public class PlaceOrder {
+public class CreateUserFunctionalTest {
    @Test
     public void validateGetResponseBody(){
 

@@ -18,7 +18,7 @@ public class SampleTest {
                 .when()
                 .get("users/2").then().assertThat().statusCode(200)
                .extract().response();
-       
+
        JsonPath path=response.body().jsonPath();
        Assert.assertEquals(path.getInt("data.id"),2);
        Assert.assertEquals(path.getString("data.email"),"janet.weaver@reqres.in");
